@@ -1,0 +1,19 @@
+apiVersion: policy/v1
+kind: PodSecurityPolicy
+metadata:
+  name: securebank-psp
+spec:
+  privileged: false
+  runAsUser:
+    rule: MustRunAsNonRoot
+  seLinux:
+    rule: RunAsAny
+  fsGroup:
+    rule: MustRunAs
+    ranges:
+    - min: 2000
+      max: 2000
+  volumes:
+  - 'configMap'
+  - 'secret'
+
