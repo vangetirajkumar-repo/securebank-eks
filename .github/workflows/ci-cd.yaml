@@ -24,8 +24,8 @@ jobs:
 
     - name: Build and push API image
       run: |
-        docker build -t vangetirajkumar/securebank-api:${{ github.sha }} ./api
-        docker push vangetirajkumar/securebank-api:${{ github.sha }}
+        docker build -t rajkumarvangeti/securebank-api:${{ github.sha }} ./api
+        docker push rajkumarvangeti/securebank-api:${{ github.sha }}
 
     - name: Update Kubernetes manifests
       run: |
