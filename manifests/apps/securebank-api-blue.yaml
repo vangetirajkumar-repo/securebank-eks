@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: rajkumarvangeti/securebank-api:bf33c3999c17f7276812cc934b23ccca2d6ed031
+        image: rajkumarvangeti/securebank-api:182343ba79907b7924c626c9d79c66df6188e87f
         ports:
         - containerPort: 8080
 
