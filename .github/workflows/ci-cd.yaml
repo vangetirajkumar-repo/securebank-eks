@@ -29,7 +29,7 @@ jobs:
 
     - name: Update Kubernetes manifests
       run: |
-        sed -i "s|image: vangetirajkumar/securebank-api:.*|image: vangetirajkumar/securebank-api:${{ github.sha }}|" manifests/apps/securebank-api-blue.yaml
+        sed -i "s|image: rajkumarvangeti/securebank-api:.*|image: rajkumarvangeti/securebank-api:${{ github.sha }}|" manifests/apps/securebank-api-blue.yaml
         git add manifests/apps/securebank-api-blue.yaml
         git commit -m "Update API image to ${{ github.sha }}"
 
