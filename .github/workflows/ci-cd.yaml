@@ -6,6 +6,9 @@ on:                # This must be present
       - main       # Triggers workflow on pushes to main
   workflow_dispatch:  # Optional, lets you run manually from Actions tab
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
