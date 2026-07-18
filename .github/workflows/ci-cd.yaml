@@ -1,10 +1,3 @@
-name: SecureBank CI/CD
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -27,18 +20,17 @@ jobs:
         docker build -t rajkumarvangeti/securebank-api:${{ github.sha }} ./api
         docker push rajkumarvangeti/securebank-api:${{ github.sha }}
 
+    - name: Configure Git identity   # Move this up here
+      run: |
+        git config --global user.email "ci@securebank.com"
+        git config --global user.name "SecureBank CI"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
     - name: Update Kubernetes manifests
       run: |
         sed -i "s|image: rajkumarvangeti/securebank-api:.*|image: rajkumarvangeti/securebank-api:${{ github.sha }}|" manifests/apps/securebank-api-blue.yaml
         git add manifests/apps/securebank-api-blue.yaml
         git commit -m "Update API image to ${{ github.sha }}"
 
-    - name: Configure GitHub credentials
-      run: |
-        git config --global user.email "ci@securebank.com"
-        git config --global user.name "SecureBank CI"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-
     - name: Push changes
       run: git push origin main
-
