@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securebank-api-green
+  namespace: securebank
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: securebank-api
+      version: green
+  template:
+    metadata:
+      labels:
+        app: securebank-api
+        version: green
+    spec:
+      containers:
+      - name: api
+        image: vangetirajkumar/securebank-api:v2
+        ports:
+        - containerPort: 8080
+
