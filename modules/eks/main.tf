@@ -1,24 +1,18 @@
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"   # lock to latest stable major version
+  version = "20.37.2"
 
   cluster_name    = "securebank-eks"
   cluster_version = "1.29"
 
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
+  subnet_ids = module.vpc.private_subnets   # 👈 connect VPC outputs here
 
-  manage_aws_auth = true
-
-  node_groups = {
+  eks_managed_node_groups = {
     default = {
-      desired_capacity = 2
-      max_capacity     = 4
-      min_capacity     = 1
-
+      min_size       = 1
+      max_size       = 3
+      desired_size   = 2
       instance_types = ["t3.medium"]
-      capacity_type  = "ON_DEMAND"
     }
   }
 }
-
