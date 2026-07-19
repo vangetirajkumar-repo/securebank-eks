@@ -1,6 +1,0 @@
-FROM eclipse-temurin:21-jdk-alpine
-WORKDIR /app
-COPY target/securebank-api-0.0.1-SNAPSHOT.jar securebank-api.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","securebank-api.jar"]
-
