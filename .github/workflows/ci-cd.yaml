@@ -28,7 +28,7 @@ jobs:
 
     - name: Build and push API image
       run: |
-        docker build -t rajkumarvangeti/securebank-api:${{ github.sha }} ./api
+        docker build -t rajkumarvangeti/securebank-api:${{ github.sha }} ./api/securebank-api
         docker push rajkumarvangeti/securebank-api:${{ github.sha }}
 
     - name: Configure Git identity
@@ -39,8 +39,10 @@ jobs:
 
     - name: Update Kubernetes manifests
       run: |
+        sed -i "s|image: rajkumarvangeti/securebank-api:.*|image: rajkumarvangeti/securebank-api:${{ github.sha }}|" manifests/apps/securebank-api.yaml
         sed -i "s|image: rajkumarvangeti/securebank-api:.*|image: rajkumarvangeti/securebank-api:${{ github.sha }}|" manifests/apps/securebank-api-blue.yaml
-        git add manifests/apps/securebank-api-blue.yaml
+        sed -i "s|image: rajkumarvangeti/securebank-api:.*|image: rajkumarvangeti/securebank-api:${{ github.sha }}|" manifests/apps/securebank-api-green.yaml
+        git add manifests/apps/securebank-api*.yaml
         git commit -m "Update API image to ${{ github.sha }}"
 
     - name: Push changes
