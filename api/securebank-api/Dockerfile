@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-slim
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 COPY target/securebank-api-0.0.1-SNAPSHOT.jar securebank-api.jar
 EXPOSE 8080
