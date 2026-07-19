@@ -1,10 +1,10 @@
 name: SecureBank CI/CD
 
-on:                # This must be present
+on:
   push:
     branches:
-      - main       # Triggers workflow on pushes to main
-  workflow_dispatch:  # Optional, lets you run manually from Actions tab
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,6 +24,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build JAR with Maven
+      working-directory: ./api/securebank-api
       run: mvn -B clean package -DskipTests
 
     - name: Set up Docker
