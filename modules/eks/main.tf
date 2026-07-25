@@ -3,7 +3,7 @@ module "eks" {
   version = "20.37.2"
 
   cluster_name    = "securebank-eks"
-  cluster_version = "1.29"
+  cluster_version = "1.35"
 
   subnet_ids = module.vpc.private_subnets   #  connect VPC outputs here
 
