@@ -10,7 +10,8 @@ module "eks" {
   # Control API endpoint access
   cluster_endpoint_public_access  = true   # keep true for now (so GitHub Actions + kubectl work)
   cluster_endpoint_private_access = false  # optional, depending on your setup
-
+  cluster_endpoint_public_access_cidrs = ["0.0.0.0/0"]
+  
   eks_managed_node_groups = {
     default = {
       min_size       = 1
