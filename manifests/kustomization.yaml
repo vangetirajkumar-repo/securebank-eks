@@ -22,7 +22,6 @@ resources:
   # --- Security ---
   - security/iam-serviceaccount-app.yaml
   - security/network-policy.yaml
-  - security/pod-security-standards.yaml
 
   # --- Observability ---
   - observability/prometheus-app.yaml
