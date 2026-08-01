@@ -15,6 +15,7 @@ spec:
         app: securebank-api
         version: blue
     spec:
+      serviceAccountName: securebank-api   # <-- Added line
       containers:
       - name: api
         image: rajkumarvangeti/securebank-api:3a285d8926aa3c407873bbe7dd0e76c3e85daba7
