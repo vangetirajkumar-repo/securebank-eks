@@ -17,7 +17,7 @@ module "eks" {
       min_size       = 1
       max_size       = 3
       desired_size   = 2
-      instance_types = ["t3.medium"]
+      instance_types = ["t3.small"]
 
       # Explicitly define labels to avoid drift
       labels = {}
