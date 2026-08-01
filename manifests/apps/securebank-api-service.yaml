@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: securebank-api
-    version: blue   # switch here between blue/green
+    version: green   # switch here between blue/green
   ports:
     - protocol: TCP
       port: 80
