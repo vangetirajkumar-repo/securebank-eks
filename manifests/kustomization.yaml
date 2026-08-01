@@ -22,6 +22,7 @@ resources:
   # --- Security ---
   - security/iam-serviceaccount-app.yaml
   - security/network-policy.yaml
+  - security/securebank-api-serviceaccount.yaml
 
   # --- Observability ---
   - observability/prometheus-app.yaml
