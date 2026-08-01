@@ -2,9 +2,33 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - apps/
-  - autoscaling/
-  - security/
-  - observability/
-  - argocd
+  # --- Apps ---
+  - apps/api-to-db.yaml
+  - apps/default-deny.yaml
+  - apps/securebank-api-blue.yaml
+  - apps/securebank-api-green.yaml
+  - apps/securebank-api-service.yaml
+  - apps/securebank-api.yaml
+
+  # If accounts/, payments/, users/ contain YAMLs, list them explicitly too:
+  # - apps/accounts/deployment.yaml
+  # - apps/payments/deployment.yaml
+  # - apps/users/deployment.yaml
+
+  # --- Autoscaling ---
+  - autoscaling/hpa-securebank-api.yaml
+  - autoscaling/cluster-autoscaler-app.yaml
+
+  # --- Security ---
+  - security/iam-serviceaccount-app.yaml
+  - security/network-policy.yaml
+  - security/pod-security-standards.yaml
+
+  # --- Observability ---
+  - observability/prometheus-app.yaml
+  - observability/grafana-app.yaml
+
+  # --- ArgoCD bootstrap (optional, if you want ArgoCD itself managed)
+  # - argocd/app-of-apps.yaml
+  # - argocd/install.yaml
 
