@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-to-db
+  namespace: securebank
+spec:
+  podSelector:
+    matchLabels:
+      app: securebank-db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: securebank-api
+    ports:
+    - protocol: TCP
+      port: 5432   # change if your DB uses another port
