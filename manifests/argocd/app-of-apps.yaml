@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'git@github.com:rajkumarvangeti-repo/securebank-eks.git'
     targetRevision: main
-    path: manifests/apps
+    path: manifests
   destination:
     server: https://kubernetes.default.svc
     namespace: securebank
