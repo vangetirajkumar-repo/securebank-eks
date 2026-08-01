@@ -18,7 +18,7 @@ spec:
       serviceAccountName: securebank-api   # <-- Added line
       containers:
       - name: api
-        image: rajkumarvangeti/securebank-api:8ef93011ec072404eda5356a53f92de3953bc1d8
+        image: rajkumarvangeti/securebank-api:1870ff786f157c4eb1ee63188b540fe5a70a2882
         ports:
         - containerPort: 8080
 
